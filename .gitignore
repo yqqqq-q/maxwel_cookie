@@ -1,0 +1,18 @@
+# cookie-classify specific
+geckodriver.log
+playground.py
+playground.js
+crawls
+sites.txt
+.lock
+
+# slurm
+slurm_logs
+.temp_run.sh
+
+# general
+__pycache__
+.idea
+.mypy_cache
+.vscode
+.env

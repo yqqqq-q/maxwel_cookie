@@ -1,0 +1,31 @@
+# Conda environment configuration file
+
+name: cookie
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python
+  - pip
+  - selenium
+  - firefox
+  - geckodriver
+  - htop
+  - screen
+  - pip:
+    - selenium-wire
+    - selenium==4.2.0  # BannerClick requires Selenium 4.2.0
+    - tldextract
+    - Pillow
+    - mypy
+    - types-requests
+    - beautifulsoup4
+    - pandas
+    - validators
+    - matplotlib
+    - lxml
+    - scipy
+    - filelock
+    - ipykernel
+    - pyyaml
+    - adjustText

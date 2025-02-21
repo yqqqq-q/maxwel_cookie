@@ -3,7 +3,7 @@ from collections import deque
 from collections.abc import Callable
 from enum import Enum
 from pathlib import Path
-from typing import Optional, TypedDict, Any
+from typing import Optional, TypedDict, Any, Union
 import pathlib
 import time
 import shutil
@@ -96,7 +96,7 @@ class CrawlResults(TypedDict, total=False):
     Class for storing results about a crawl.
     """
 
-    url: str | None  # URL of the website being crawled. None if Domain->URL resolution failed.
+    url: Optional[str]  # URL of the website being crawled. None if Domain->URL resolution failed.
     data_path: str  # Where the crawl data is stored
     landing_page_down: bool  # True/False if landing page is down/up, None if not attempted
     unexpected_exception: bool  # True iff an unexpected exception occurred
@@ -106,9 +106,9 @@ class CrawlResults(TypedDict, total=False):
     SIGKILL: bool  # If process was sent SIGKILL by main.py
 
     # Only set during compliance_algo
-    cmp_names: set[CMP] | None  # Empty if no CMPs found, None if CMP detection not attempted
-    interaction_type: BannerClick | CMP | None  # None if no interaction was attempted
-    interaction_success: bool | None  # None if no interaction was attempted
+    cmp_names: Optional[set[CMP]]  # Empty if no CMPs found, None if CMP detection not attempted
+    interaction_type: Optional[Union[BannerClick, CMP]]  # None if no interaction was attempted
+    interaction_success: Optional[bool]  # None if no interaction was attempted
 
     # Only set during classification_algo
     # List of clickstreams where each clickstream is a list of CSS selectors (str)
@@ -315,7 +315,7 @@ class Crawler:
         
         raise LandingPageDown()
 
-    @crawl_algo
+    # @crawl_algo
     def compliance_algo(self, depth: int = 0):
         """
         Run the website cookie compliance algorithm.
@@ -409,7 +409,7 @@ class Crawler:
 
             return
 
-    @crawl_algo
+    # @crawl_algo
     def classification_algo(self, total_actions: int = 50, clickstream_length: int = 5):
         """
         Cookie classification algorithm.
@@ -480,7 +480,7 @@ class Crawler:
             self,
             crawl_name: str = "",
             depth: int = 0,
-            interaction_type: BannerClick | CMP | None = None,
+            interaction_type: Optional[Union[BannerClick, CMP]] = None,
             cookie_blocklist: tuple[CookieClass, ...] = ()
     ):
         """
@@ -695,7 +695,7 @@ class Crawler:
     @log
     def crawl_clickstream(
             self,
-            clickstream: list[tuple[str, ClickableElement]] | None,
+            clickstream: Optional[list[tuple[str, ClickableElement]]],
             clickstream_length: int = 5,
             crawl_name: str = "",
             set_request_interceptor: bool = False,
@@ -864,7 +864,7 @@ class Crawler:
                     if i < ATTEMPTS - 1:
                         time.sleep(self.wait_time)
 
-    def extract_features(self, path: pathlib.Path | str, crawl_name: str) -> None:
+    def extract_features(self, path: Union[pathlib.Path, str], crawl_name: str) -> None:
         """
         Extract features from the current page and save them to a file.
 
@@ -872,7 +872,7 @@ class Crawler:
             path: Directory to save the content.
             crawl_name: Name of the crawl (e.g., "baseline", "control", "experimental") used for file names.
         """
-        def extract_word_counts(innerText: str | None) -> dict:
+        def extract_word_counts(innerText: Optional[str]) -> dict:
             """
             Extract words from innerText and return a dictionary of word counts.
             
@@ -895,7 +895,7 @@ class Crawler:
                     counts[word] = 1
             return counts
         
-        def count_list_items(list: list | None) -> dict:
+        def count_list_items(list: Optional[list]) -> dict:
             """
             Reduce a list to a dictionary of frequencies.
             """

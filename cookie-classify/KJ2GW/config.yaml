@@ -1,0 +1,3 @@
+SITE_LIST_PATH: "/Users/siren/Code/IMC2024-CookielessBrowsing/inputs/sites/KJ2GW.txt"
+QUEUE_PATH: "/Users/siren/Code/IMC2024-CookielessBrowsing/cookie-classify/KJ2GW/queue.json"
+RESULTS_PATH: "/Users/siren/Code/IMC2024-CookielessBrowsing/cookie-classify/KJ2GW/results.json"

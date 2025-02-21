@@ -1,0 +1,12 @@
+2025-02-20 22:03:39 INFO: Queue is empty, exiting.
+2025-02-21 13:21:49 INFO: Joining process for 'arstechnica.com'.
+2025-02-21 13:22:49 CRITICAL: Queue for 'arstechnica.com' is empty.
+2025-02-21 13:24:20 INFO: Joining process for 'hbomax.com'.
+2025-02-21 13:25:20 CRITICAL: Queue for 'hbomax.com' is empty.
+2025-02-21 13:25:21 INFO: Joining process for 'nodejs.org'.
+2025-02-21 13:26:21 CRITICAL: Queue for 'nodejs.org' is empty.
+2025-02-21 13:26:21 INFO: Joining process for 'engadget.com'.
+2025-02-21 13:27:21 CRITICAL: Queue for 'engadget.com' is empty.
+2025-02-21 13:27:22 INFO: Joining process for 'safety.google'.
+2025-02-21 13:28:22 CRITICAL: Queue for 'safety.google' is empty.
+2025-02-21 13:28:22 INFO: Queue is empty, exiting.

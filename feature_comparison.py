@@ -15,7 +15,7 @@ import numpy as np
 
 CRAWL_NAME = 'KJ2GW'
 
-DATA_PATH = Path("/usr/project/xtmp/mml66/cookie-classify/") / CRAWL_NAME
+DATA_PATH = Path("/Users/siren/Code/IMC2024-CookielessBrowsing/cookie-classify/") / CRAWL_NAME
 ANALYSIS_PATH = Path("analysis") / CRAWL_NAME
 for name in ["innerText", "links", "img", "screenshots"]:
     (ANALYSIS_PATH / "slurm" / name).mkdir(parents=True, exist_ok=True)

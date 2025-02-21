@@ -18,6 +18,10 @@ except ImportError as E:
 rej_flag = False
 
 
+TIME_OUT = 30
+HEADLESS = True 
+NUM_BROWSERS = 1
+TEST_MODE_SLEEP = 5
 
 def reset():
     global counter, driver, visit_db, domains, this_domain, this_url, banner_db, html_db, this_lang, this_banner_lang, this_run_url

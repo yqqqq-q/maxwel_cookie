@@ -11,7 +11,7 @@ from crawler import Crawler, CrawlDataEncoder, CrawlResults
 import config
 
 logger = logging.getLogger(config.LOGGER_NAME)
-SLURM_ARRAY_TASK_ID = int(os.getenv('SLURM_ARRAY_TASK_ID')) # type: ignore
+SLURM_ARRAY_TASK_ID = int(os.getenv('SLURM_ARRAY_TASK_ID', '0')) # type: ignore
 
 def worker(domain: str, queue: mp.Queue) -> None:
     """

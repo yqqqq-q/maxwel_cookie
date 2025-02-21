@@ -16,7 +16,7 @@ import numpy as np
 
 CRAWL_NAME = "KJ2GW"
 
-DATA_PATH = Path("/usr/project/xtmp/mml66/cookie-classify/") / CRAWL_NAME
+DATA_PATH = Path("/Users/siren/Code/IMC2024-CookielessBrowsing/cookie-classify/") / CRAWL_NAME
 ANALYSIS_PATH = Path("analysis") / CRAWL_NAME
 EASYLIST_PATH = Path("inputs") / "easylist" / "easylist.txt"
 

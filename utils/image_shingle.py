@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from PIL import Image
 import hashlib
-from typing import Self
+# from typing import Self
 import pathlib
 
 

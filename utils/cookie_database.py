@@ -89,7 +89,7 @@ class CookieDatabase:
         }
 
         classes = {}
-        with open(data_path, 'r') as file:
+        with open(data_path, 'r', encoding="utf8") as file:
             csv_reader = csv.reader(file)
 
             next(csv_reader)  # skip header

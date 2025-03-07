@@ -33,7 +33,7 @@ def init():
         yaml.dump(config_dict, outfile, default_flow_style=False)
         
     # Copy sites.txt to crawl path
-    os.system(f'cp {config.SITE_LIST_PATH} {config.DATA_PATH}')
+    os.system(f'copy {config.SITE_LIST_PATH} {config.DATA_PATH}')
 
     # Write sites to queue with lock
     sites = []

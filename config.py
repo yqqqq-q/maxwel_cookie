@@ -5,9 +5,9 @@ DEPTH = 0
 WAIT_TIME = 5
 
 TOTAL_ACTIONS = 50
-CLICKSTREAM_LENGTH = 5
+CLICKSTREAM_LENGTH = 10
 
-DATA_PATH = f"/Users/siren/Code/IMC2024-CookielessBrowsing/cookie-classify/{CRAWL_NAME}/"
+DATA_PATH = f"cookie-classify/{CRAWL_NAME}/"
 LOGGER_NAME = CRAWL_NAME
 RESULTS_PATH = DATA_PATH + "results.json"
 QUEUE_PATH = DATA_PATH + "queue.json"

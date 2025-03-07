@@ -1,6 +1,6 @@
 # Conda environment configuration file
 
-name: cookie
+name: cookie-maxwel
 channels:
   - defaults
   - conda-forge
@@ -10,8 +10,8 @@ dependencies:
   - selenium
   - firefox
   - geckodriver
-  - htop
-  - screen
+  # - htop
+  # - screen
   - pip:
     - selenium-wire
     - selenium==4.2.0  # BannerClick requires Selenium 4.2.0

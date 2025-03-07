@@ -69,14 +69,15 @@ def main():
                 
         process = mp.Process(target=worker, args=(domain, output))
         process.start()
-        
-        TIMEOUT = 60 * 60  # 1 hour
+        print(domain)
+        # TIMEOUT = 60 * 60  # 1 hour
+        TIMEOUT = 60*40
         process.join(TIMEOUT)
         logger.info(f"Joining process for '{domain}'.")
         
         sigkill = False
         if process.exitcode is None:
-            logger.warn(f"Terminating process for '{domain}' due to timeout.")
+            logger.warning(f"Terminating process for '{domain}' due to timeout.")
             process.terminate()
             process.join()
             
@@ -89,7 +90,7 @@ def main():
                 sigkill = True
 
 
-        result: CrawlResults
+        result = CrawlResults()
         if not sigkill:
             try:
                 result = output.get(timeout=60)
@@ -98,17 +99,21 @@ def main():
                 result = {
                     "data_path": f"{config.DATA_PATH}{domain}/",
                     "SIGKILL": True,
+                    "total_time": time.time() - start_time,
                 }
         else:
             result = {
                 "data_path": f"{config.DATA_PATH}{domain}/",
                 "SIGKILL": True,
+                "total_time": time.time() - start_time,
             }
             
-        result['SLURM_ARRAY_TASK_ID'] = SLURM_ARRAY_TASK_ID
-        result['total_time'] = time.time() - start_time
+        # if result is not None:    
+        #     result['SLURM_ARRAY_TASK_ID'] = SLURM_ARRAY_TASK_ID
+        #     result['total_time'] = 
 
         # Read existing data, update it, and write back
+        
         with results_lock:
             with open(config.RESULTS_PATH, 'r') as f:
                 data = json.load(f)

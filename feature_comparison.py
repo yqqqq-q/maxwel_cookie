@@ -15,7 +15,7 @@ import numpy as np
 
 CRAWL_NAME = 'KJ2GW'
 
-DATA_PATH = Path("/Users/siren/Code/IMC2024-CookielessBrowsing/cookie-classify/") / CRAWL_NAME
+DATA_PATH = Path("cookie-classify/") / CRAWL_NAME
 ANALYSIS_PATH = Path("analysis") / CRAWL_NAME
 for name in ["innerText", "links", "img", "screenshots"]:
     (ANALYSIS_PATH / "slurm" / name).mkdir(parents=True, exist_ok=True)
@@ -26,7 +26,8 @@ with open(DATA_PATH / "config.yaml", "r") as stream:
 
 # Site list
 site_list = []
-with open(config["SITE_LIST_PATH"]) as file:
+# with open(config["SITE_LIST_PATH"]) as file: # it is in result folder config
+with open("inputs/sites/KJ2GW.txt") as file:
     for line in file:
         site_list.append(line.strip())
 

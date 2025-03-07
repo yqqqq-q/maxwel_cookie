@@ -410,7 +410,7 @@ class Crawler:
             return
 
     # @crawl_algo
-    def classification_algo(self, total_actions: int = 50, clickstream_length: int = 5):
+    def classification_algo(self, total_actions: int = 50, clickstream_length: int = 10):
         """
         Cookie classification algorithm.
 
@@ -696,7 +696,7 @@ class Crawler:
     def crawl_clickstream(
             self,
             clickstream: Optional[list[tuple[str, ClickableElement]]],
-            clickstream_length: int = 5,
+            clickstream_length: int = 1,
             crawl_name: str = "",
             set_request_interceptor: bool = False,
     ) -> list[tuple[str, ClickableElement]]:
